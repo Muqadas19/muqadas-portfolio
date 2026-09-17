@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const origin = "https://muqadas19.github.io/muqadas-portfolio";
 
 export default function sitemap(): MetadataRoute.Sitemap {
