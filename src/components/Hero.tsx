@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { mailto, site } from "@/content/site";
+import { assetPath } from "@/lib/asset";
 
 export function Hero() {
   return (
@@ -51,8 +52,8 @@ export function Hero() {
           <div className="absolute -inset-6 rounded-hero bg-orchid/30 blur-3xl" aria-hidden />
           <div className="relative overflow-hidden rounded-hero border border-white/10 shadow-glow">
             <Image
-              src="/portrait.png"
-              alt="Portrait placeholder"
+              src={assetPath("/portrait.png")}
+              alt="Portrait of Muqadas Ibrar"
               width={840}
               height={1120}
               priority

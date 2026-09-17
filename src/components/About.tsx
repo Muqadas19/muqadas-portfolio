@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { site } from "@/content/site";
+import { assetPath } from "@/lib/asset";
 
 export function About() {
   return (
@@ -9,8 +10,8 @@ export function About() {
           <div className="absolute inset-8 rounded-board bg-flame/20 blur-3xl" aria-hidden />
           <div className="relative overflow-hidden rounded-board border border-white/10">
             <Image
-              src="/portrait.png"
-              alt="Portrait placeholder"
+              src={assetPath("/portrait.png")}
+              alt="Portrait of Muqadas Ibrar"
               width={720}
               height={960}
               className="aspect-[4/5] h-auto w-full object-cover object-top"

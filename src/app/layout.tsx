@@ -44,8 +44,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
-      <body className="page-glow min-h-[100dvh] antialiased">
+    <html lang="en" className={`${display.variable} ${sans.variable}`} suppressHydrationWarning>
+      <body className="page-glow min-h-[100dvh] antialiased" suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { site } from "@/content/site";
+import { assetPath } from "@/lib/asset";
 
 const boards = [
   {
@@ -51,7 +52,7 @@ export function Portfolio() {
               <div className="relative grid grid-cols-[1fr_0.55fr] items-end gap-4">
                 <div className="overflow-hidden rounded-[1.35rem] border border-white/10 bg-black/30">
                   <Image
-                    src={project.desktop}
+                    src={assetPath(project.desktop)}
                     alt={`${project.name} desktop interface`}
                     width={1280}
                     height={720}
@@ -60,7 +61,7 @@ export function Portfolio() {
                 </div>
                 <div className="overflow-hidden rounded-[1.35rem] border border-white/10 bg-black/30">
                   <Image
-                    src={project.mobile}
+                    src={assetPath(project.mobile)}
                     alt={`${project.name} mobile interface`}
                     width={720}
                     height={960}
