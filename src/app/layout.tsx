@@ -50,7 +50,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
-        <div className="flex min-h-[100dvh] flex-col overflow-x-hidden">
+        <div className="flex min-h-[100dvh] flex-col">
           <Navbar />
           <div className="flex-1">{children}</div>
           <Footer />

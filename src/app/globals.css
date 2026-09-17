@@ -10,6 +10,11 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+}
+
+.section-anchor {
+  scroll-margin-top: 6.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -29,6 +34,7 @@ body {
   background: var(--bg);
   color: #f6f1ff;
   font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -117,4 +123,34 @@ body {
 
 .sparkle-orchid {
   background: #c084fc;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .marquee-track ul[aria-hidden="true"] {
+    display: none;
+  }
 }

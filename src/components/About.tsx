@@ -4,7 +4,7 @@ import { assetPath } from "@/lib/asset";
 
 export function About() {
   return (
-    <section className="relative mx-auto w-full max-w-[1180px] overflow-hidden px-4 pb-20 pt-8 md:pb-28">
+    <section id="about" className="section-anchor relative mx-auto w-full max-w-[1180px] overflow-hidden px-4 pb-20 pt-8 md:pb-28">
       <div className="relative grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="relative mx-auto w-full max-w-md">
           <div className="absolute inset-8 rounded-board bg-flame/20 blur-3xl" aria-hidden />
@@ -20,7 +20,8 @@ export function About() {
         </div>
 
         <div>
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+          <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-white/45">About</p>
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">
             {site.aboutHeadline}
           </h2>
           <div className="mt-6 max-w-[62ch] space-y-4 text-[15px] leading-relaxed text-white/70">

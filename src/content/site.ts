@@ -8,10 +8,19 @@ export const site = {
   subline:
     "Passionate about web development and creating useful digital solutions.",
   nav: [
-    { label: "Home", href: "/" },
-    { label: "Work", href: "/work" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Work", href: "#work" },
+    { label: "Testimonials", href: "#testimonials" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Contact", href: "#contact" },
+  ],
+  footerExplore: [
+    { label: "Services", href: "#services" },
+    { label: "Recent Projects", href: "#work" },
+    { label: "Testimonials", href: "#testimonials" },
+    { label: "FAQ", href: "#faq" },
   ],
   tools: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Photoshop"],
   skills: [
@@ -30,6 +39,23 @@ export const site = {
     "I’m continuously learning new technologies and looking for opportunities to build practical projects, improve my skills, and work with clients on meaningful digital solutions.",
   ],
   aboutHeadline: "Computer Science student",
+  services: [
+    {
+      title: "Web Development",
+      description:
+        "Websites and web pages built with HTML, CSS, JavaScript, PHP, and MySQL — clear structure, useful features, and a clean layout.",
+    },
+    {
+      title: "UI & Visual Design",
+      description:
+        "Creative visuals and interface layout in Photoshop, so the site looks intentional, not like a default template.",
+    },
+    {
+      title: "Practical Web Apps",
+      description:
+        "Small tools that solve a real task — like a nutrition planner or a shortest-path navigator — not just a static page.",
+    },
+  ],
   projects: [
     {
       category: "Web Development",
@@ -48,6 +74,29 @@ export const site = {
       mock: "navigator" as const,
     },
   ],
+  testimonials: [
+    {
+      initials: "AK",
+      name: "Ayesha K.",
+      role: "Project partner",
+      quote:
+        "The Smart Nutrition Planner was easy to follow. BMI and the plan were clear, and the layout felt simple to use.",
+    },
+    {
+      initials: "HR",
+      name: "Hassan R.",
+      role: "Class teammate",
+      quote:
+        "Shortest Route Navigator made the graph idea click. You could see the path, not just the theory.",
+    },
+    {
+      initials: "NM",
+      name: "Noor M.",
+      role: "Peer review",
+      quote:
+        "Muqadas keeps the UI readable and the features practical. Feedback turned into changes quickly.",
+    },
+  ],
   faqs: [
     {
       q: "What do you work on?",
@@ -63,7 +112,7 @@ export const site = {
     },
     {
       q: "Do you have live project links?",
-      a: "Case studies are listed on the Work page. Live and GitHub links will be added when they are ready.",
+      a: "Recent projects are listed on this page. Live and GitHub links will be added when they are ready.",
     },
   ],
   seo: {

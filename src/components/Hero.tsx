@@ -1,11 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
-import { mailto, site } from "@/content/site";
-import { assetPath } from "@/lib/asset";
+import { site } from "@/content/site";
+import { assetPath, hashHref } from "@/lib/asset";
 
 export function Hero() {
   return (
-    <section id="home" className="relative mx-auto w-full max-w-[1180px] px-4 pb-20 pt-10 md:pt-14">
+    <section id="home" className="section-anchor relative mx-auto w-full max-w-[1180px] px-4 pb-10 pt-10 md:pb-12 md:pt-14">
       <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
         <div>
           <p className="mb-5 inline-flex items-center gap-2 text-[15px] font-medium text-white">
@@ -13,9 +12,9 @@ export function Hero() {
             <span className="h-px w-10 bg-flame" />
           </p>
 
-          <h1 className="display max-w-5xl text-[clamp(3.2rem,11vw,7.4rem)] text-white drop-shadow-[0_0_40px_rgba(192,132,252,0.35)]">
-            {site.role.split(" ").map((word) => (
-              <span key={word} className="block">
+          <h1 className="display max-w-5xl text-[clamp(3.2rem,11vw,7.4rem)] drop-shadow-[0_0_40px_rgba(192,132,252,0.35)]">
+            {site.role.split(" ").map((word, index) => (
+              <span key={word} className={`block ${index === 0 ? "text-flame" : "text-white"}`}>
                 {word}
               </span>
             ))}
@@ -26,24 +25,13 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href={mailto} className="btn-flame">
+            <a href={hashHref("contact")} className="btn-flame">
               Let’s Talk
             </a>
-            <Link href="/work" className="btn-ghost">
+            <a href={hashHref("work")} className="btn-ghost">
               See Work
-            </Link>
+            </a>
           </div>
-
-          <ul className="mt-10 flex flex-wrap gap-2" aria-label="Tools">
-            {site.tools.map((tool) => (
-              <li
-                key={tool}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-[12px] text-white/75"
-              >
-                {tool}
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div className="relative mx-auto w-full max-w-[420px]">

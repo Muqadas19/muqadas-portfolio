@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { site } from "@/content/site";
-import { assetPath } from "@/lib/asset";
+import { assetPath, hashHref } from "@/lib/asset";
 
 const boards = [
   {
@@ -19,8 +19,15 @@ const boards = [
 
 export function Portfolio() {
   return (
-    <section className="relative mx-auto w-full max-w-[1180px] overflow-hidden px-4 pb-20 pt-8 md:pb-28">
-      <div className="relative space-y-8">
+    <section id="work" className="section-anchor relative mx-auto w-full max-w-[1180px] overflow-hidden px-4 pb-20 pt-8 md:pb-28">
+      <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-white/50">Work</p>
+      <h2 className="mt-3 text-[clamp(2.6rem,7vw,5.2rem)] font-extrabold leading-[1.05] tracking-tight text-white">
+        Recent Projects
+      </h2>
+      <p className="mt-3 max-w-[46ch] text-[13px] leading-relaxed text-white/55 md:text-sm">
+        Two web projects focused on a real task: nutrition planning and shortest-path navigation.
+      </p>
+      <div className="relative mt-10 space-y-8">
         {boards.map((project) => (
           <article
             key={project.name}
@@ -28,13 +35,13 @@ export function Portfolio() {
           >
             <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr]">
               <div>
-                <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-white/55">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/50">
                   {project.category}
                 </p>
-                <h3 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+                <h3 className="mt-2 text-xl font-semibold tracking-tight text-white md:text-2xl">
                   {project.name}
                 </h3>
-                <p className="mt-4 max-w-[46ch] text-[15px] leading-relaxed text-white/75">
+                <p className="mt-3 max-w-[46ch] text-[13px] leading-relaxed text-white/65 md:text-sm">
                   {project.description}
                 </p>
                 <ul className="mt-6 flex flex-wrap gap-2">
@@ -72,6 +79,14 @@ export function Portfolio() {
             </div>
           </article>
         ))}
+      </div>
+      <div className="mt-10 flex flex-wrap items-center gap-3">
+        <a href={hashHref("contact")} className="btn-flame">
+          Let’s Talk
+        </a>
+        <a href={hashHref("services")} className="btn-ghost">
+          See Services
+        </a>
       </div>
     </section>
   );
