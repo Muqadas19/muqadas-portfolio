@@ -16,35 +16,39 @@ export function Faq() {
 
   useGSAP(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const stage = stageRef.current;
 
     gsap.from("[data-faq='title']", {
       y: reduceMotion ? 0 : 36,
       autoAlpha: 0,
       duration: reduceMotion ? 0.01 : 0.9,
       ease: "power3.out",
-      scrollTrigger: { trigger: "#faq", start: "top 75%" },
+      scrollTrigger: { trigger: "#faq", start: "top 75%", once: true },
     });
 
-    if (reduceMotion) return;
+    if (reduceMotion || !stage) return;
 
     gsap.from("[data-faq='aside']", {
       x: -24,
       autoAlpha: 0,
       duration: 0.75,
       ease: "power3.out",
-      scrollTrigger: { trigger: stageRef.current, start: "top 80%" },
+      scrollTrigger: { trigger: stage, start: "top 85%", once: true },
     });
 
+    // Play once and stay visible — reverse was hiding the question list
     gsap.from("[data-faq='row']", {
-      y: 32,
+      y: 28,
       autoAlpha: 0,
-      duration: 0.7,
-      stagger: 0.08,
-      ease: "back.out(1.4)",
+      duration: 0.65,
+      stagger: 0.07,
+      ease: "power3.out",
+      immediateRender: false,
       scrollTrigger: {
-        trigger: stageRef.current,
-        start: "top 78%",
-        toggleActions: "play reverse play reverse",
+        trigger: stage,
+        start: "top 85%",
+        toggleActions: "play none none none",
+        once: true,
       },
     });
   }, []);
