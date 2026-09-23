@@ -23,7 +23,8 @@ export function Faq() {
       autoAlpha: 0,
       duration: reduceMotion ? 0.01 : 0.9,
       ease: "power3.out",
-      scrollTrigger: { trigger: "#faq", start: "top 75%", once: true },
+      immediateRender: false,
+      scrollTrigger: { trigger: "#faq", start: "top 80%", once: true },
     });
 
     if (reduceMotion || !stage) return;
@@ -33,10 +34,11 @@ export function Faq() {
       autoAlpha: 0,
       duration: 0.75,
       ease: "power3.out",
+      immediateRender: false,
       scrollTrigger: { trigger: stage, start: "top 85%", once: true },
     });
 
-    // Play once and stay visible — reverse was hiding the question list
+    // Play once on scroll down — stay visible, never reverse/hide
     gsap.from("[data-faq='row']", {
       y: 28,
       autoAlpha: 0,

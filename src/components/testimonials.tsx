@@ -87,12 +87,13 @@ export function Testimonials() {
       autoAlpha: 0,
       duration: reduceMotion ? 0.01 : 0.9,
       ease: "power3.out",
-      scrollTrigger: { trigger: "#testimonials", start: "top 75%" },
+      immediateRender: false,
+      scrollTrigger: { trigger: "#testimonials", start: "top 80%", once: true },
     });
 
     if (reduceMotion) return;
 
-    // Pop in once — don't reverse to invisible (that left empty black gaps)
+    // Visible by default; animate in once on scroll — never reverse/hide
     gsap.from("[data-testimonials='card']", {
       y: 40,
       scale: 0.9,
@@ -100,10 +101,12 @@ export function Testimonials() {
       duration: 0.7,
       stagger: 0.08,
       ease: "back.out(1.55)",
+      immediateRender: false,
       scrollTrigger: {
         trigger: "#testimonials",
-        start: "top 72%",
+        start: "top 78%",
         toggleActions: "play none none none",
+        once: true,
       },
     });
   }, []);

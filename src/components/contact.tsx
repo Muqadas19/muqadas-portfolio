@@ -28,7 +28,8 @@ export function Contact() {
       autoAlpha: 0,
       duration: reduceMotion ? 0.01 : 0.9,
       ease: "power3.out",
-      scrollTrigger: { trigger: "#contact", start: "top 75%" },
+      immediateRender: false,
+      scrollTrigger: { trigger: "#contact", start: "top 80%", once: true },
     });
 
     if (reduceMotion) return;
@@ -38,7 +39,13 @@ export function Contact() {
       autoAlpha: 0,
       duration: 0.75,
       ease: "power3.out",
-      scrollTrigger: { trigger: "#contact", start: "top 70%" },
+      immediateRender: false,
+      scrollTrigger: {
+        trigger: "#contact",
+        start: "top 78%",
+        toggleActions: "play none none none",
+        once: true,
+      },
     });
   }, []);
 
