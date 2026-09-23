@@ -1,0 +1,350 @@
+@import "tailwindcss";
+
+/* Outfit is the reading font. The script font is only for the name. */
+@theme inline {
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-script), cursive;
+  --color-ink: #07090b;
+  --color-accent: #1ec8d4;
+  --color-paper: #f4f7f7;
+}
+
+html {
+  background: var(--color-ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+}
+
+/* Keyboard users can see which link is selected. Mouse users do not get a box. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Glossy button: dark teal at the edges, fading into a white center. */
+.btn-gloss {
+  background: linear-gradient(
+    180deg,
+    #1095a4 0%,
+    #17a8bb 12%,
+    #14c3d7 28%,
+    #18cde1 40%,
+    #24e7f9 50%,
+    #26d9ed 62%,
+    #22c1d9 74%,
+    #20b8ce 84%,
+    #23a9ba 92%,
+    #388085 100%
+  );
+  color: #07141a;
+}
+
+@keyframes hero-drift {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.hero-drift {
+  animation: hero-drift 22s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-drift {
+    animation: none;
+  }
+}
+
+/* Dark rounded panels used in the About layout (skills + text + side cards). */
+.about-panel {
+  background:
+    linear-gradient(160deg, rgba(18, 28, 34, 0.96) 0%, rgba(8, 12, 16, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+.about-panel:hover,
+.about-panel.is-active {
+  border-color: rgba(30, 200, 212, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(30, 200, 212, 0.2),
+    0 16px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateY(-3px);
+}
+
+.about-panel-glow {
+  background:
+    radial-gradient(ellipse 80% 70% at 100% 100%, rgba(30, 200, 212, 0.18), transparent 55%),
+    linear-gradient(160deg, rgba(18, 28, 34, 0.96) 0%, rgba(8, 12, 16, 0.98) 100%);
+}
+
+.about-panel-glow:hover,
+.about-panel-glow.is-active {
+  background:
+    radial-gradient(ellipse 90% 80% at 100% 100%, rgba(30, 200, 212, 0.32), transparent 58%),
+    linear-gradient(160deg, rgba(18, 28, 34, 0.96) 0%, rgba(8, 12, 16, 0.98) 100%);
+}
+
+/* Horizontal tech logo slider (left → right, seamless loop). */
+@keyframes tech-slide-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.tech-slider-track {
+  width: max-content;
+  animation: tech-slide-right 22s linear infinite;
+}
+
+.tech-slider-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-slider-track {
+    animation: none;
+  }
+
+  .about-panel:hover,
+  .about-panel.is-active {
+    transform: none;
+  }
+
+  .about-grid-tip {
+    display: none;
+  }
+}
+
+/* Four column guides — soft, fade at section edges so lines don’t join across sections.
+   Silver tip styles stay separate and unchanged. */
+.about-grid-line {
+  width: 1px;
+  top: 3.5rem;
+  bottom: 3.5rem;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(180, 210, 220, 0.14) 10%,
+    rgba(180, 210, 220, 0.22) 22%,
+    rgba(30, 200, 212, 0.2) 50%,
+    rgba(180, 210, 220, 0.22) 78%,
+    rgba(180, 210, 220, 0.14) 90%,
+    transparent 100%
+  );
+}
+
+.about-grid-tip {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: 72px;
+  margin-top: -36px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(230, 238, 245, 0.15) 18%,
+    rgba(236, 242, 248, 0.95) 50%,
+    rgba(230, 238, 245, 0.15) 82%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 10px rgba(236, 242, 248, 0.55),
+    0 0 22px rgba(30, 200, 212, 0.35);
+  will-change: top;
+  top: 10%;
+}
+
+/* Service cards — dark teal wash, stronger when active (no fake stats). */
+.service-card {
+  background:
+    radial-gradient(ellipse 90% 80% at 100% 100%, rgba(30, 200, 212, 0.14), transparent 55%),
+    linear-gradient(155deg, rgba(16, 28, 32, 0.98) 0%, rgba(6, 12, 14, 0.99) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+.service-card.is-active,
+.service-card:hover {
+  border-color: rgba(30, 200, 212, 0.42);
+  box-shadow:
+    0 0 0 1px rgba(30, 200, 212, 0.18),
+    0 20px 48px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+  background:
+    radial-gradient(ellipse 95% 85% at 100% 100%, rgba(30, 200, 212, 0.28), transparent 58%),
+    linear-gradient(155deg, rgba(18, 34, 38, 0.98) 0%, rgba(6, 12, 14, 0.99) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card.is-active,
+  .service-card:hover {
+    transform: none;
+  }
+}
+
+/* Work thumbs + detail card — same glow language as service / about panels */
+.work-nav-panel {
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(160deg, rgba(18, 28, 34, 0.96) 0%, rgba(8, 12, 16, 0.98) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.work-thumb {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0a1014;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 40px rgba(0, 0, 0, 0.35);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+.work-thumb:hover {
+  border-color: rgba(30, 200, 212, 0.42);
+  box-shadow:
+    0 0 0 1px rgba(30, 200, 212, 0.16),
+    0 20px 48px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateY(-3px);
+}
+
+.work-detail-card {
+  background:
+    radial-gradient(ellipse 90% 70% at 100% 0%, rgba(30, 200, 212, 0.16), transparent 55%),
+    linear-gradient(160deg, rgba(18, 28, 34, 0.98) 0%, rgba(8, 12, 16, 0.99) 100%);
+  border: 1px solid rgba(30, 200, 212, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(30, 200, 212, 0.12),
+    0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-thumb:hover {
+    transform: none;
+  }
+}
+
+/* Testimonials — horizontal slide + dark cards */
+.testimonial-card {
+  background:
+    radial-gradient(ellipse 80% 60% at 100% 100%, rgba(30, 200, 212, 0.12), transparent 55%),
+    linear-gradient(160deg, rgba(18, 28, 34, 0.96) 0%, rgba(8, 12, 16, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 40px rgba(0, 0, 0, 0.3);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  border-color: rgba(30, 200, 212, 0.4);
+  box-shadow:
+    0 0 0 1px rgba(30, 200, 212, 0.15),
+    0 18px 44px rgba(0, 0, 0, 0.4);
+  transform: scale(1.03);
+}
+
+@keyframes testimonial-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-marquee-track {
+  animation: testimonial-slide 42s linear infinite;
+}
+
+.testimonial-marquee:hover .testimonial-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-marquee-track {
+    animation: none;
+  }
+
+  .testimonial-card:hover {
+    transform: none;
+  }
+}
+
+/* FAQ — preview card on desktop */
+.faq-preview {
+  background:
+    radial-gradient(ellipse 90% 70% at 0% 100%, rgba(30, 200, 212, 0.16), transparent 55%),
+    linear-gradient(160deg, rgba(18, 28, 34, 0.96) 0%, rgba(8, 12, 16, 0.98) 100%);
+  border: 1px solid rgba(30, 200, 212, 0.28);
+  box-shadow:
+    0 0 0 1px rgba(30, 200, 212, 0.08),
+    0 18px 44px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Contact — info cards under the form (Codium-style) */
+.contact-info-card {
+  background:
+    linear-gradient(160deg, rgba(18, 28, 34, 0.82) 0%, rgba(8, 12, 16, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 14px 36px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
+}
+
+.contact-info-card:hover {
+  border-color: rgba(30, 200, 212, 0.35);
+}
+
+/* Soften contact bg grain / pixel edges without losing cyan glow */
+.contact-idea-bg {
+  transform: scale(1.05);
+  filter: blur(1.1px) contrast(1.06) saturate(1.1);
+  image-rendering: auto;
+}
+
+/* Footer giant name — muted chalky watermark */
+.footer-watermark {
+  color: rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+  filter: contrast(1.1) blur(0.3px);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+}
